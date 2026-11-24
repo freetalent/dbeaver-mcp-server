@@ -35,13 +35,8 @@ public class ListConnectionsTool implements McpTool {
         JsonObject schema = Schemas.object();
         Schemas.prop(schema, "name", "string",
                 "Optional connection-name pattern. Uses SQL ILIKE syntax by default (% and _ wildcards).");
-        JsonObject mode = Schemas.prop(schema, "nameMode", "string",
+        Schemas.prop(schema, "nameMode", "string",
                 "How to interpret name: ilike (default) or regex. Regex patterns use Java syntax and find().");
-        JsonArray modes = new JsonArray();
-        modes.add("ilike");
-        modes.add("regex");
-        mode.add("enum", modes);
-        mode.addProperty("default", "ilike");
         return schema;
     }
 
